@@ -1,4 +1,4 @@
-# TAS7
+# 7V-Scanario
 
 Upon publication, this repository will contain (among others):
 - URLs to the datasets (ROS bags, additional GNSS/INS raw data dumps)
