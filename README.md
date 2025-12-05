@@ -1,4 +1,5 @@
 # 7V-Scanario
+<img width="1525" height="311" alt="github_teaser" src="https://github.com/user-attachments/assets/5fe75c8d-45b1-495e-a4b1-a24eec8e05f0" />
 
 Upon publication, this repository will contain (among others):
 - URLs to the datasets (ROS bags, additional GNSS/INS raw data dumps)
