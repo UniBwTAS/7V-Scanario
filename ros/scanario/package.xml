@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>scanario</name>
+  <version>1.0.0</version>
+  <description>Supplementary ROS package for 7V-Scanario</description>
+  <author>UniBw PAD</author>
+  <maintainer email="tas@unibw.de">TAS</maintainer>
+  <license>on request</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>visualization_msgs</build_depend>
+  <build_depend>radar_msgs</build_depend>  
+  <build_export_depend>std_msgs</build_export_depend>
+  <build_export_depend>visualization_msgs</build_export_depend>
+
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend>
+
+  <depend>tf2</depend>
+  <depend>tf2_ros</depend>
+
+  <depend>object_msgs</depend>
+  
+  <depend>roslib</depend>
+  
+  <export>
+  </export>
+</package>

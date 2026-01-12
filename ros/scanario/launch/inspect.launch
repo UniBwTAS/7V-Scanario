@@ -1,0 +1,21 @@
+<!-- usage: roslaunch scanario inspect.launch bag:=/home/tas/7V-Scanario/recordings/recordings_output/multi-vehicle/03_crossTraffic/2024-12-05-12-30-05.bag -->
+
+<launch>
+  <arg name="bag"/>
+
+  <!-- Play rosbag -->
+  <node pkg="rosbag" type="play" name="rosbag_play" output="screen" required="true" args="$(arg bag) --clock --rate=0.1 --delay=5 --loop"/>
+  <param name="/use_sim_time" value="true"/>
+  
+  <!-- Camera processing -->
+  <node pkg="image_proc" type="image_proc" name="image_proc_surround_front" output="screen" required="true" ns="/sensor/camera/surround/front"/>
+  <node pkg="image_proc" type="image_proc" name="image_proc_surround_back"  output="screen" required="true" ns="/sensor/camera/surround/back" />
+  <node pkg="image_proc" type="image_proc" name="image_proc_surround_left"  output="screen" required="true" ns="/sensor/camera/surround/left" />
+  <node pkg="image_proc" type="image_proc" name="image_proc_surround_right" output="screen" required="true" ns="/sensor/camera/surround/right"/>
+  
+  <!-- Marker for target objects -->
+  <node pkg="scanario" type="target_objects" name="target_objects_marker" output="screen" required="true" ns="/sensor/ins/oxts_rt3000"/>
+
+  <!-- rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="--display-config $(find scanario)/rviz/scanario-inspect.rviz"/>
+</launch>
