@@ -30,7 +30,7 @@ We describe the dataset, discuss the technical background of its development, an
 
 **Example videos:**
 
-Artifical lighting, shown in Blender:
+Artifical lighting (may be used for physical data augmentation), shown in Blender:
 
 https://github.com/user-attachments/assets/0f4eccfd-406b-43c4-95c3-4d0c8cf1b14f
 
