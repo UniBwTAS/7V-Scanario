@@ -75,8 +75,8 @@ Quantity | Sensor Type | Sensor Name | Description |
 | -- | ------ | ----------- | -- |
 | 4 | Camera  | `Basler acA2440-20gc` | surround RGB cameras, mounted on the roof |
 | 1 | LiDAR  | `Velodyne VLS128` | mounted on the roof |
-| 1 | Radar  | `Smartmicro UMRR-11` | far-range 77GHz Doppler radar, mounted on the front |
-| 5 | Radar  | `Smartmicro UMRR-96` | mid-range 77GHz Doppler radar, mounted on the front and on all four vehicle corners |
+| 1 | Radar  | `Smartmicro UMRR-11` | far-range 77GHz Doppler radar, mounted on the front bumper |
+| 5 | Radar  | `Smartmicro UMRR-96` | mid-range 77GHz Doppler radar, mounted on the front bumper and on all four vehicle corners |
 | 1+n | INS | `Oxford OxTS RT3003` | RTK-GNSS INS with two GNSS antennas and local RTK reference data (1 ego + n target vehicles) |
 | 1 | Vehicle CAN data | `VW Touareg` (ego) | vehicle series sensors like wheel speed and steering measurements |
  ---
@@ -136,19 +136,19 @@ The ROS bag contains the sensor data of the ego vehicle and all received WiFi da
 | `bus/umrr/eth_measurements/bus_to_host` | `ethernet_msgs/Packet` | Raw Ethernet data received from the UMRR radar sensors (smartmicro transport protocol) |
 | `bus/vls128/eth_scan/bus_to_host` | `ethernet_msgs/Packet` | Raw Ethernet data received from the VLS128 lidar sensor |
 | `localization/egomotion/odom` | `nav_msgs/Odometry` | A simple 2D dead-reckoning egomotion that solely uses the series wheel speed sensors and a (2D) yaw rate gyroscope. Algorithms like SLAM using this egomotion can be compared to the INS reference solution without causing ground-truth leakage. |
-| `sensor/camera/surround/<Camera ID>/camera_info` | `sensor_msgs/CameraInfo` | Processed CameraInfo message for \<Camera ID\> |
-| `sensor/camera/surround/<Camera ID>/image_raw` | `sensor_msgs/Image` | Raw image of \<Camera ID\> |
+| `sensor/camera/surround/<Camera ID>/camera_info` | `sensor_msgs/CameraInfo` | CameraInfo message for \<Camera ID\> |
+| `sensor/camera/surround/<Camera ID>/image_raw` | `sensor_msgs/Image` | Raw image of \<Camera ID\>. Use the rviz image pipeline for rectified images. |
 | `sensor/ins/oxts_rt3000/gps/fix` | `sensor_msgs/NavSatFix` | Processed NavSatFix message of the ego vehicle's OxTS INS unit |
-| `sensor/ins/oxts_rt3000/gps/odom` | `nav_msgs/Odometry` | Processed NavSatFix message of the ego vehicle's OxTS INS unit. The pose information is given in UTM coordinates. |
+| `sensor/ins/oxts_rt3000/gps/odom` | `nav_msgs/Odometry` | Processed Odometry message of the ego vehicle's OxTS INS unit. The pose information is given in UTM coordinates. |
 | `sensor/ins/oxts_rt3000/imu/data` | `sensor_msgs/Imu` | Processed Imu message of the ego vehicle's OxTS INS unit |
-| `sensor/ins/oxts_rt3000/objects` | `object_msgs/Objects` | INS pose and kinematics data from the ego vehicle and all target vehicles, attached with 3D dimension information. Emitted sequentially (for each INS) - no data synchronization. Only outputs INS data for vehicles in WiFi range. |
-| `sensor/lidar/vls128_roof/velodyne_points` | `sensor_msgs/PointCloud2` | Processed PointCloud2 message of the VLS128 lidar sensor |
+| `sensor/ins/oxts_rt3000/objects` | `object_msgs/Objects` | INS pose and kinematics data from the ego vehicle and all target vehicles, attached with 3D dimensions. Emitted sequentially (for each INS) - no data synchronization. Only outputs INS data for vehicles in WiFi range. |
+| `sensor/lidar/vls128_roof/velodyne_points` | `sensor_msgs/PointCloud2` | Processed PointCloud2 message of the VLS128 lidar sensor (without any egomotion compensation) |
 | `sensor/radar/umrr/detections` | `radar_msgs/DetectionRecord` | Processed UMRR radar detections, collected over all UMRR sensors |
 | `sensor/radar/umrr/pointclouds/<Radar ID>` | `sensor_msgs/PointCloud2` | Processed PointCloud2 message of the UMRR radar sensor \<Radar ID\> |
 | `tf` | `tf2_msgs/TFMessage` | dynamic TF messages |
 | `tf_static` | `tf2_msgs/TFMessage` | static TF messages, containing static mounting poses of the sensors (see frame_id) |
 | `other/<Vehicle ID>/sensor/ins/oxts_rt3000/gps/fix` | `sensor_msgs/NavSatFix` | Processed NavSatFix message of the specific target vehicle's OxTS INS unit. Only available when target vehicle is in WiFi range. |
-| `other/<Vehicle ID>/sensor/ins/oxts_rt3000/gps/odom` | `nav_msgs/Odometry` | Processed NavSatFix message of the specific target vehicle's OxTS INS unit. The pose information is given in UTM coordinates. Only available when target vehicle is in WiFi range. |
+| `other/<Vehicle ID>/sensor/ins/oxts_rt3000/gps/odom` | `nav_msgs/Odometry` | Processed Odometry message of the specific target vehicle's OxTS INS unit. The pose information is given in UTM coordinates. Only available when target vehicle is in WiFi range. |
 | `other/<Vehicle ID>/sensor/ins/oxts_rt3000/imu/data` | `sensor_msgs/Imu` | Processed Imu message of the specific target vehicle's OxTS INS unit. Only available when target vehicle is in WiFi range. |
 --- 
 
@@ -172,7 +172,7 @@ Simply download them to `/path/to/data/` and execute:
 `cd /path/to/data && for f in *.tar.xz; do tar -xJf "$f"; done`
 
 ### 3D-Scans
-The scans provide 3D contour and texture information on each vehicle used in this dataset. Each scan is aligned to the coordinate system (translation and rotation) of the **output data** of the INS of the vehicle. Background: while some INS units use the reference point of the IMU as the zero-point of its coordinate system, others use the centroid of the vehicle. The reference point is selected for best measurability. As the 3D scans are already aligned accordingly, you do not need to perform any object coordinate transformations.
+The scans provide 3D contour and texture information for each vehicle used in this dataset. Each scan is aligned to the coordinate system (translation and rotation) of the **output data** of the INS of the vehicle. Background: while some INS units use the reference point of the IMU as the zero-point of its coordinate system, others use the centroid of the vehicle. The reference point is selected for best measurability. As the 3D scans are already aligned accordingly, you do not need to perform any object coordinate transformations.
 
 #### Artec Studio
 The 3D scans were obtained with the Artec Leo 3D hand scanner and using the Artec Studio for registration. Please contact us if you need the Artec Studio project files including the raw measurements (between 50GB and 200GB per vehicle).
@@ -194,11 +194,11 @@ Please contact us if you need the raw data of the local GNSS reference station.
 
 ## Example ROS Code
 This section outlines the installation of the ROS package that can be used for a rough data inspection (sensor data visualization + 3D models) of the dataset data in rviz.
-Please note that **rviz does not perform a synchronization of the visualized data** (e.g., between all sensor measurements and the INS units that provide the poses of all 3D objects), which causes significant deviations of the visualized data. For any kind of data evaluation and processing, you need to use the provided timestamp in the ROS message headers for time synchronization. **The rviz rendering should only be used for rough data inspection.**
+Please note that **rviz does not perform time synchronization of the visualized data** (e.g., between all sensor measurements and the INS units that provide the poses of all 3D objects), which causes significant deviations of the visualized data. For any kind of data evaluation and processing, you need to use the provided timestamp in the ROS message headers for time synchronization. **The rviz rendering should only be used for rough data inspection.**
 1. Add `object_msgs` (see [dependencies](#dependencies)) to your catkin workspace.
-1. (optionally) Also add the other packages from [dependencies](#dependencies).
+1. (optionally, to use raw data) Also add the other packages from [dependencies](#dependencies).
 1. Add the contents of the folder `ros` of this repository to your catkin workspace.
 1. Download the [Collada](#reduced-collada-files-for-rviz-visualization) files and unpack them to the `meshes` folder in the ROS package, i. e., to `scanario/meshes/`.
 1. Compile your workspace using `catkin build`.
 1. Start the launch file `roslaunch scanario inspect.launch bag:=<path_to_bag>`, where `<path_to_bag>` corresponds to the ROS Bag (path and filename) you would like to investigate, for example, `roslaunch scanario inspect.launch bag:=/mnt/data/multi-vehicle/09_highway/2024-12-05-12-47-21.bag`. The bag will be played, and an example rviz layout is started.
-1. To view the 3D models, activate "meshes" (to be found in Tab `Displays` -> `Target Objects` -> `Marker` -> `Namespaces`). Please note that the initial loading of the 3D models will take several seconds.
+1. To view the 3D models, activate "mesh" (to be found in Tab `Displays` -> `Target Objects` -> `Marker` -> `Namespaces`). Please note that the initial loading of the 3D models will take up to a minute.
