@@ -52,7 +52,7 @@ https://github.com/user-attachments/assets/210d9f38-a5f5-41e7-8b67-11e5d0c7c176
 - [Recordings](#recordings): Description of the recorded single-vehicle and multi-vehicle recordings
 - [ROS Topics](#ros-bag-topics): Description of all ROS topics
 - [Download](#download): Available material of this dataset (ROS bags, 3D scans, offline INS logs) and how to get all data
-- [Installation](#installation): Manual to run a rough data inspection in rviz
+- [Example ROS code](#example-ros-code): Manual to run a rough data inspection in rviz
 
 **License:** on request
 
@@ -192,7 +192,7 @@ The INS data is sorted by vehicle and time.
 
 Please contact us if you need the raw data of the local GNSS reference station.
 
-## Installation
+## Example ROS Code
 This section outlines the installation of the ROS package that can be used for a rough data inspection (sensor data visualization + 3D models) of the dataset data in rviz.
 Please note that **rviz does not perform a synchronization of the visualized data** (e.g., between all sensor measurements and the INS units that provide the poses of all 3D objects), which causes significant deviations of the visualized data. For any kind of data evaluation and processing, you need to use the provided timestamp in the ROS message headers for time synchronization. **The rviz rendering should only be used for rough data inspection.**
 1. Add `object_msgs` (see [dependencies](#dependencies)) to your catkin workspace.
