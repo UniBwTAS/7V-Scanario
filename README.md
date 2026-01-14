@@ -137,7 +137,7 @@ The ROS bag contains the sensor data of the ego vehicle and all received WiFi da
 | `bus/vls128/eth_scan/bus_to_host` | `ethernet_msgs/Packet` | Raw Ethernet data received from the VLS128 lidar sensor |
 | `localization/egomotion/odom` | `nav_msgs/Odometry` | A simple 2D dead-reckoning egomotion that solely uses the series wheel speed sensors and a (2D) yaw rate gyroscope. Algorithms like SLAM using this egomotion can be compared to the INS reference solution without causing ground-truth leakage. |
 | `sensor/camera/surround/<Camera ID>/camera_info` | `sensor_msgs/CameraInfo` | CameraInfo message for \<Camera ID\> |
-| `sensor/camera/surround/<Camera ID>/image_raw` | `sensor_msgs/Image` | Raw image of \<Camera ID\>. Use the rviz image pipeline for rectified images. |
+| `sensor/camera/surround/<Camera ID>/image_raw` | `sensor_msgs/Image` | Raw image of \<Camera ID\>. Use the ROS image pipeline for rectified images. |
 | `sensor/ins/oxts_rt3000/gps/fix` | `sensor_msgs/NavSatFix` | Processed NavSatFix message of the ego vehicle's OxTS INS unit |
 | `sensor/ins/oxts_rt3000/gps/odom` | `nav_msgs/Odometry` | Processed Odometry message of the ego vehicle's OxTS INS unit. The pose information is given in UTM coordinates. |
 | `sensor/ins/oxts_rt3000/imu/data` | `sensor_msgs/Imu` | Processed Imu message of the ego vehicle's OxTS INS unit |
