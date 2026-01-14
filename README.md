@@ -30,20 +30,19 @@ We describe the dataset, discuss the technical background of its development, an
 
 **Example videos:**
 
-Artifical lighting (may be used for physical data augmentation), shown in Blender:
-
-https://github.com/user-attachments/assets/0f4eccfd-406b-43c4-95c3-4d0c8cf1b14f
-
-
 Multi-object scenario (rendered in rviz, without time-synchronization):
 
 https://github.com/user-attachments/assets/3c7207f4-b516-47bc-9782-608187efbe09
 
 
+Artifical lighting (may be used for physical data augmentation), shown in Blender:
+
+https://github.com/user-attachments/assets/0f4eccfd-406b-43c4-95c3-4d0c8cf1b14f
+
+
 Heatmap for radar detections (rendered in MATLAB as normalized 360°-view accumulation):
 
 https://github.com/user-attachments/assets/210d9f38-a5f5-41e7-8b67-11e5d0c7c176
-
 
 
 **Index:**
