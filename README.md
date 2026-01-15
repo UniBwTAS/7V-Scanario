@@ -32,7 +32,7 @@ We describe the dataset, discuss the technical background of its development, an
 
 Multi-object scenario (rendered in rviz, without time-synchronization):
 
-https://github.com/user-attachments/assets/3c7207f4-b516-47bc-9782-608187efbe09
+https://github.com/user-attachments/assets/28407284-4935-4290-8ff5-ac9e59e162c3
 
 
 Artifical lighting (may be used for physical data augmentation), shown in Blender:
