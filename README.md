@@ -35,7 +35,7 @@ Multi-object scenario (rendered in rviz, without time-synchronization):
 https://github.com/user-attachments/assets/28407284-4935-4290-8ff5-ac9e59e162c3
 
 
-3D-Scan of a compact car
+3D-Scan of a compact car (succeeded Artec Studio scan registration):
 
 https://github.com/user-attachments/assets/83a12f25-8f94-4e5e-bfb7-644928d68034
 
