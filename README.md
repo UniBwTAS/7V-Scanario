@@ -35,6 +35,11 @@ Multi-object scenario (rendered in rviz, without time-synchronization):
 https://github.com/user-attachments/assets/28407284-4935-4290-8ff5-ac9e59e162c3
 
 
+3D-Scan of a compact car
+
+https://github.com/user-attachments/assets/83a12f25-8f94-4e5e-bfb7-644928d68034
+
+
 Artifical lighting (may be used for physical data augmentation), shown in Blender:
 
 https://github.com/user-attachments/assets/0f4eccfd-406b-43c4-95c3-4d0c8cf1b14f
