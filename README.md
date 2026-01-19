@@ -75,14 +75,14 @@ https://github.com/user-attachments/assets/210d9f38-a5f5-41e7-8b67-11e5d0c7c176
 
 ## Sensors
 
-Quantity | Sensor Type | Sensor Name | Description |
-| -- | ------ | ----------- | -- |
-| 4 | Camera  | `Basler acA2440-20gc` | surround RGB cameras, mounted on the roof |
-| 1 | LiDAR  | `Velodyne VLS128` | mounted on the roof |
-| 1 | Radar  | `Smartmicro UMRR-11` | far-range 77GHz Doppler radar, mounted on the front bumper |
-| 5 | Radar  | `Smartmicro UMRR-96` | mid-range 77GHz Doppler radar, mounted on the front bumper and on all four vehicle corners |
-| 1+n | INS | `Oxford OxTS RT3003` | RTK-GNSS INS with two GNSS antennas and local RTK reference data (1 ego + n target vehicles) |
-| 1 | Vehicle CAN data | `VW Touareg` (ego) | vehicle series sensors like wheel speed and steering measurements |
+Quantity | Sensor Type | Sensor Name | Rate (each) | Description |
+| -- | ------ | ----------- | -- | -- |
+| 4 | Camera  | `Basler acA2440-20gc` | 10 Hz | surround RGB cameras, mounted on the roof |
+| 1 | LiDAR  | `Velodyne VLS128` | 10 Hz | mounted on the roof |
+| 1 | Radar  | `Smartmicro UMRR-11` | ~18 Hz | far-range 77GHz Doppler radar, mounted on the front bumper |
+| 5 | Radar  | `Smartmicro UMRR-96` | ~18 Hz | mid-range 77GHz Doppler radar, mounted on the front bumper and on all four vehicle corners |
+| 1+n | INS | `Oxford OxTS RT3003` | 100 Hz | RTK-GNSS INS with two GNSS antennas and local RTK reference data (1 ego + n target vehicles) |
+| 1 | Vehicle CAN data | `VW Touareg` (ego) | 20 Hz | vehicle series sensors like wheel speed and steering measurements |
  ---
 
 ## Recordings
