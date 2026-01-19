@@ -71,6 +71,8 @@ https://github.com/user-attachments/assets/210d9f38-a5f5-41e7-8b67-11e5d0c7c176
 | `q8`  | Audi Q8 | sports utility vehicle, prototype vehicle with various sensors on the roof |
 | `streetscooter`  | Streetscooter Work | small delivery transporter, prototype vehicle with various sensors on the roof |
 | `crafter`  | VW e-Crafter | large transporter, prototype vehicle with various sensors on the roof |
+<img src="https://github.com/user-attachments/assets/fb730e9a-6b15-4455-a556-efc9d7af2b62" />
+
  ---
 
 ## Sensors
