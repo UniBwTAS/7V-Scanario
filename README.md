@@ -169,13 +169,15 @@ Most ROS message type formats are standard ROS messages, the remaining message d
 ---
 
 ## Download
-We are currently organizing the upload of the data (total: approx. 1 TB) to a publicly accessible platform. Until then, you are welcome to send us a hard drive with return postage. Please contact us for this.
+This section describes the download of the measurement recordings (ROS bags), the 3D scans, and additional INS data.
 
 ### Recordings
 All ROS bags are compressed and can be downloaded separately.
 Simply download them to `/path/to/data/` and execute:
 
 `cd /path/to/data && for f in *.tar.xz; do tar -xJf "$f"; done`
+
+Download: https://huggingface.co/datasets/UniBw-AD/7V-Scanario / `recordings`
 
 ### 3D-Scans
 The scans provide 3D contour and texture information for each vehicle used in this dataset. Each scan is aligned to the coordinate system (translation and rotation) of the **output data** of the INS of the vehicle. Background: while some INS units use the reference point of the IMU as the zero-point of its coordinate system, others use the centroid of the vehicle. The reference point is selected for best measurability. As the 3D scans are already aligned accordingly, you do not need to perform any object coordinate transformations.
@@ -186,8 +188,12 @@ The 3D scans were obtained with the Artec Leo 3D hand scanner and using the Arte
 #### Wavefront Objects
 The processed 3D scans are provided as Wavefront Object (.obj-files with texture). You can use software like __[Blender](https://www.blender.org/)__ to convert the objects to a format of your choice.
 
+Download: https://huggingface.co/datasets/UniBw-AD/7V-Scanario / `3D-models/obj.tar.xz`
+
 #### Reduced Collada Files for rviz Visualization
 We also provide a downsampled version of each vehicle as Collada file (.dae) for a straight-forward usage in rviz (using __[Markers](https://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D)__) for quick data inspection. Please note that loading all objects simultaneously still requires high computing resources, which might cause lags in rviz.
+
+Download: https://huggingface.co/datasets/UniBw-AD/7V-Scanario / `3D-models/dae.tar.xz`
 
 ### INS (raw) data
 The ROS bags contain the poses of the ego vehicle and all target vehicles (see ROS topic description). This data has been received via long-range WiFi during the recordings.
@@ -195,6 +201,8 @@ As a stable WiFi connection cannot be retained at high distances, the INS additi
 A manual for the installation and operation of the processing software can be found here:
 __[OxTS (INS) processing of RD files to NCOM or CSV](https://support.oxts.com/hc/en-us/articles/360010705400-NAVsolve-CMD-Command-Line-User-Guide)__.
 The INS data is sorted by vehicle and time.
+
+Download: https://huggingface.co/datasets/UniBw-AD/7V-Scanario / `INS/INS.tar.xz` (sorted by vehicle and time)
 
 Please contact us if you need the raw data of the local GNSS reference station.
 
