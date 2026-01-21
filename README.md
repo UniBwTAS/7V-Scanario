@@ -37,7 +37,7 @@ https://github.com/user-attachments/assets/28407284-4935-4290-8ff5-ac9e59e162c3
 
 3D-Scan of a compact car (succeeded Artec Studio scan registration):
 
-https://github.com/user-attachments/assets/83a12f25-8f94-4e5e-bfb7-644928d68034
+https://github.com/user-attachments/assets/14c5f74a-7866-4c18-b7a0-f6d495535795
 
 
 Artifical lighting (may be used for physical data augmentation), shown in Blender:
